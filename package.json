@@ -1,0 +1,21 @@
+{
+  "name": "filetool",
+  "version": "1.0.0",
+  "description": "文件整理，可以获取目录下所有文件名，根据一些配置(如:文件重命名，正则替换，分隔符），批量整理文件名，并生成xls",
+  "main": "index.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "config"
+  ],
+"bin": {
+    "mycli": "index.js"
+ },
+  "type": "module",
+  "author": "yuzhi",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  }
+}
