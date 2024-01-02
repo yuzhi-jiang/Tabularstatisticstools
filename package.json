@@ -9,13 +9,15 @@
   "keywords": [
     "config"
   ],
-"bin": {
+  "bin": {
     "mycli": "index.js"
- },
+  },
   "type": "module",
   "author": "yuzhi",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "node-xlsx": "^0.23.0",
+    "nzh": "^1.0.12"
   }
 }

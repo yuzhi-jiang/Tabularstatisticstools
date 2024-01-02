@@ -4,6 +4,7 @@ import path from 'path';
 import Nzh from "nzh";
 var nzhcn = Nzh.cn;//使用简体中文
 import util from '../util/index.js'
+import {CONSTANT} from "../util/constant.js";
 
 
 const renameFile = (fileRules, currIndex) => {
@@ -36,7 +37,7 @@ const renameFile = (fileRules, currIndex) => {
         return startStr + newName + endStr;
     }
 }
-const separatorFile = (filename, fileRules) => {
+export const separatorFile = (filename, fileRules) => {
     var Separator = fileRules[CONSTANT.SEPARATOR]
     var reg = RegExp(Separator.value)
     if (Separator.value.length > 0) {
@@ -53,6 +54,9 @@ function insertStr(soure, start, addChars) {
 
 const addStr = (filename, fileRules) => {
     var AddStr = fileRules[CONSTANT.ADDSTR]
+    if(!AddStr){
+        return filename
+    }
     var addvalue = AddStr.value
     var addIndex = AddStr.index
 
@@ -103,12 +107,14 @@ const replaceStr = (filename, fileRules) => {
 
 
 
-export const fileHandler = (err, files, fileRules) => {
-    if (err) {
-        return err;
-    }
+export const fileHandler = ( files, fileRules) => {
+
 
     var resArr = []
+
+    if(!fileRules){
+        return files
+    }
 
     files.forEach((file, index) => {
         var fileExtension = file.split('.').pop().toLowerCase();//后缀

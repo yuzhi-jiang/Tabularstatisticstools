@@ -33,5 +33,11 @@ export const CONSTANT = {
     ADDSTR_INDEX: {
         start: 0,
         end: -1,
+    },
+    DEFAULT_XLS: {
+        name: '',
+        sheetName: 'sheet1',
+        titles: [],
+        outdir: 'outdir'
     }
 }

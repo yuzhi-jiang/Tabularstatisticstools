@@ -1,9 +1,9 @@
 import { CONSTANT } from "../util/constant.js"
 const fileConfig = {
-    path: '../uploads',//需要处理的目录地址  默认为当前路径
+    path: './uploads',//需要处理的目录地址  默认为当前路径
     // 注意：所有的都不包含文件夹（就是文件夹不处理） 
 
-    rules2: {
+    rules: {
         [CONSTANT.REGEXP]: '',
         [CONSTANT.ADDSTR]: {
             index: CONSTANT.ADDSTR_INDEX.start,
