@@ -36,7 +36,7 @@ const renameFile = (fileRules, currIndex) => {
         return startStr + newName + endStr;
     }
 }
-const separatorFile = (filename, fileRules) => {
+export const separatorFile = (filename, fileRules) => {
     var Separator = fileRules[CONSTANT.SEPARATOR]
     var reg = RegExp(Separator.value)
     if (Separator.value.length > 0) {
@@ -103,12 +103,14 @@ const replaceStr = (filename, fileRules) => {
 
 
 
-export const fileHandler = (err, files, fileRules) => {
-    if (err) {
-        return err;
-    }
+export const fileHandler = ( files, fileRules) => {
+
 
     var resArr = []
+
+    if(!fileRules){
+        return files
+    }
 
     files.forEach((file, index) => {
         var fileExtension = file.split('.').pop().toLowerCase();//后缀

@@ -1,4 +1,4 @@
-import { getNewConfig } from "../getconfig2.js";
+import { getNewConfig } from "../getconfig.js";
 import questions from '../questions.js'
 import { CONSTANT } from "../util/constant.js";
 // console.log(questions)

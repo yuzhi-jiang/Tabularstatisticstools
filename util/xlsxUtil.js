@@ -2,7 +2,7 @@
 // const fs = require('fs'); //引入模块
 import xlsx from 'node-xlsx'
 import fs from 'fs'
-
+import {separatorFile} from "../fileHandler/index.js";
 // var buffer = xlsx.build([{ name: 'mySheetName', data: data }]); // Returns a buffer
 
 // fs.writeFileSync('./the_content.xlsx', buffer, { 'flag': 'w' })
@@ -25,7 +25,16 @@ const createXlsxAndWrite = (fileName, sheetName, titles, data) => {
     const buffer = createXlsx(sheetName, titles, data)
     writeXlsxSync(fileName, buffer)
 }
-
+export const getXlsxData = (filesArr,fileConfig) => {
+    var res = []
+    console.log('000000000000')
+    filesArr.forEach((item) => {
+        console.log(separatorFile(item, fileConfig.rules2))
+        res.push(separatorFile(item, fileConfig.rules2))
+    })
+    console.log('000000000000')
+    return res;
+}
 export default {
     createXlsx,
     writeXlsxSync,
