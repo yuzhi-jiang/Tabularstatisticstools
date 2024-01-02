@@ -98,12 +98,12 @@ export function getNewConfig() {
                 // console.log(res)
 
                 // console.log('====================')
-                // const ress = inputConigToFileConfig(res)
+                const ress = inputConigToFileConfig(res)
                 // console.log(ress)
                 // console.log(ress.rule.filter)
                 // console.log(ress.rule.filter.value)
                 // console.log('====================')
-                resolve(res)
+                resolve(ress)
 
             }).catch(err => {
                 rejects(err)
