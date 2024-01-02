@@ -1,20 +1,28 @@
 #!/usr/bin/env node 
 
 
-import Nzh from "nzh"; //直接使用简体中文
-import {fileHandler} from "./fileHandler/index.js";
+import fs from 'fs'
 import xlsxUtil, {getXlsxData} from "./util/xlsxUtil.js";
+import {getNewConfig} from "./getConfig.js";
+import {getRulesFile} from "./getFilenames.js";
 
 
 
 
-const main = async (fileConfig) => {
-    const filesArr = await getFiles(fileConfig.path, fileConfig.rules2, fileHandler)
+export const main = async (fileConfig) => {
+    if(!fileConfig){
+        fileConfig=await getNewConfig()
+    }
+    const filesArr = await getRulesFile(fileConfig.path, fileConfig.rules)
     const data = getXlsxData(filesArr,fileConfig)
 
     var currData = new Date().toLocaleDateString().replace(new RegExp('\/', 'g'), '')
 
     var filename = fileConfig.xls.name || "tongji" + currData + Math.floor(Math.random() * (9999 - 1000))
+    //  判断文件师傅存在
+    if(fs.existsSync(filename)){
+        filename=filename+"_"+Math.floor(Math.random() * (9999 - 1000))
+    }
     var title = fileConfig.xls.titles || []
     var sheetName = fileConfig.xls.sheetName || '数据'
     // console.log(filename,title,sheetName)

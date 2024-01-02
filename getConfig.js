@@ -4,22 +4,27 @@ import { CONSTANT } from './util/constant.js'
 const dirname = process.cwd()
 
 
-function inputConigToFileConfig(inputConfig) {
+export function inputConigToFileConfig(inputConfig) {
     var fileConfigT = {}
-    fileConfigT.rule = {}
+    fileConfigT.rules = {}
 
 
 
     //path
     fileConfigT.path = inputConfig.path
+    if (inputConfig.xls) {
+        fileConfigT.xls = inputConfig.xls
+    }else{
+        fileConfigT.xls = CONSTANT.DEFAULT_XLS
+    }
 
     //filter
-    fileConfigT.rule[CONSTANT.FILTER] = {
+    fileConfigT.rules[CONSTANT.FILTER] = {
         way: CONSTANT.FILTER_WAY.include,
         value: [CONSTANT.FILTER_ALL]
     }
     if (inputConfig.doCheckBox.includes(CONSTANT.FILTER)) {
-        fileConfigT.rule[CONSTANT.FILTER] = {
+        fileConfigT.rules[CONSTANT.FILTER] = {
             way: inputConfig[CONSTANT.FILTER].way,
             value: [].concat(inputConfig[CONSTANT.FILTER].value.join())
         }
@@ -30,13 +35,13 @@ function inputConigToFileConfig(inputConfig) {
 
     //replace
     if (inputConfig.doCheckBox.includes(CONSTANT.REPLACE)) {
-        fileConfigT.rule[CONSTANT.REPLACE] = {}
+        fileConfigT.rules[CONSTANT.REPLACE] = {}
 
         const rpArr = inputConfig[CONSTANT.REPLACE].inputvalue.split(' ')
-        fileConfigT.rule[CONSTANT.REPLACE].value = inputConfig[CONSTANT.REPLACE].inputvalue.split(' ')[0]
-        fileConfigT.rule[CONSTANT.REPLACE].replace = ''
+        fileConfigT.rules[CONSTANT.REPLACE].value = inputConfig[CONSTANT.REPLACE].inputvalue.split(' ')[0]
+        fileConfigT.rules[CONSTANT.REPLACE].replace = ''
         if (rpArr.length > 1) {
-            fileConfigT.rule[CONSTANT.REPLACE].replace = inputConfig[CONSTANT.REPLACE].inputvalue.split(' ')[1]
+            fileConfigT.rules[CONSTANT.REPLACE].replace = inputConfig[CONSTANT.REPLACE].inputvalue.split(' ')[1]
         }
     }
 
@@ -46,7 +51,7 @@ function inputConigToFileConfig(inputConfig) {
     if (inputConfig.doCheckBox.includes(CONSTANT.SEPARATOR)) {
 
 
-        fileConfigT.rule[CONSTANT.SEPARATOR] = {
+        fileConfigT.rules[CONSTANT.SEPARATOR] = {
             value: inputConfig[CONSTANT.SEPARATOR].value
         }
         // console.log(CONSTANT.SEPARATOR + ":")
@@ -58,7 +63,7 @@ function inputConigToFileConfig(inputConfig) {
 
     if (inputConfig.doCheckBox.includes(CONSTANT.RENAME)) {
 
-        fileConfigT.rule[CONSTANT.RENAME] = {}
+        fileConfigT.rules[CONSTANT.RENAME] = {}
         fileConfig.rule[CONSTANT.RENAME] = inputConfig[CONSTANT.RENAME]
     }
 
@@ -66,7 +71,7 @@ function inputConigToFileConfig(inputConfig) {
     if (inputConfig.doCheckBox.includes(CONSTANT.ADDSTR)) {
         console.log(CONSTANT.ADDSTR + ":")
         console.log(inputConfig[CONSTANT.ADDSTR])
-        fileConfigT.rule[CONSTANT.ADDSTR] = {
+        fileConfigT.rules[CONSTANT.ADDSTR] = {
             index: inputConfig[CONSTANT.ADDSTR].index,
             value: inputConfig[CONSTANT.ADDSTR].value
         }
@@ -90,14 +95,14 @@ export function getNewConfig() {
         inquirer.prompt(
             Questions).then((res) => {
                 const aab = res
-                console.log(res)
+                // console.log(res)
 
-                console.log('====================')
-                const ress = inputConigToFileConfig(res)
-                console.log(ress)
-                console.log(ress.rule.filter)
-                console.log(ress.rule.filter.value)
-                console.log('====================')
+                // console.log('====================')
+                // const ress = inputConigToFileConfig(res)
+                // console.log(ress)
+                // console.log(ress.rule.filter)
+                // console.log(ress.rule.filter.value)
+                // console.log('====================')
                 resolve(res)
 
             }).catch(err => {

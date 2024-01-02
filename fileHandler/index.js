@@ -4,6 +4,7 @@ import path from 'path';
 import Nzh from "nzh";
 var nzhcn = Nzh.cn;//使用简体中文
 import util from '../util/index.js'
+import {CONSTANT} from "../util/constant.js";
 
 
 const renameFile = (fileRules, currIndex) => {
@@ -53,6 +54,9 @@ function insertStr(soure, start, addChars) {
 
 const addStr = (filename, fileRules) => {
     var AddStr = fileRules[CONSTANT.ADDSTR]
+    if(!AddStr){
+        return filename
+    }
     var addvalue = AddStr.value
     var addIndex = AddStr.index
 

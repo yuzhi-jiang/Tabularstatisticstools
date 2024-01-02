@@ -12,8 +12,8 @@ const getAllFiles = (filepath) => {
     })
 }
 
-export async function getRulesFile(fileRules) {
-    var files = await getAllFiles("./test", null, null)
+export async function getRulesFile(path,fileRules) {
+    var files = await getAllFiles(path, null, null)
 
     return fileHandler(files, fileRules)
 }

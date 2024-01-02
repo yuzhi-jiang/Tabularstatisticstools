@@ -289,7 +289,7 @@ questions = questions.concat(addQuestion)
 questions = questions.concat(xlsQuestion)
 
 // console.log(questions.concat(reNameQuestion))
-//  console.log(questions)
+ console.log(questions)
 /*output:
 [
   {
