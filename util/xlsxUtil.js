@@ -27,12 +27,10 @@ const createXlsxAndWrite = (fileName, sheetName, titles, data) => {
 }
 export const getXlsxData = (filesArr,fileConfig) => {
     var res = []
-    console.log('000000000000')
     filesArr.forEach((item) => {
         console.log(separatorFile(item, fileConfig.rules))
         res.push(separatorFile(item, fileConfig.rules))
     })
-    console.log('000000000000')
     return res;
 }
 export default {
