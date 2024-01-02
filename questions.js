@@ -112,7 +112,7 @@ const CheckBokQuestion = [{
     message: '需要处理的动作',
     choices: [
         {
-            name: "过滤选择",
+            name: "后缀过滤选择",
             value: CONSTANT.FILTER
         },
         {
@@ -158,7 +158,7 @@ const filterQuestion = [
         when: (answers) => {
             return (answers.doCheckBox.includes(CONSTANT.FILTER))
         },
-        message: '过滤类型',
+        message: '后缀过滤类型',
         choices: [{
             name: '包含',
             value: CONSTANT.FILTER_WAY.include

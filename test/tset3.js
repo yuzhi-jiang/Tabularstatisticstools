@@ -7,6 +7,14 @@ var config={
     separator: { value: '-' },
 }
 
+var config1={
+    path: 'D:\\\\projects\\\\nodeproject\\\\Tabularstatisticstools\\\\uploads',
+    rename: { status: false },
+    doCheckBox: [ 'filter', 'separator' ],
+    filter: { way: 0, value: [ 'txt' ] },
+    separator: { value: '-' }
+}
+
 const a=inputConigToFileConfig(config)
 console.log(a)
 main(a)

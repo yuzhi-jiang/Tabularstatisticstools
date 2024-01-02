@@ -20,6 +20,14 @@ export const main = async (fileConfig) => {
 
     var filename = fileConfig.xls.name || "tongji" + currData + Math.floor(Math.random() * (9999 - 1000))
     //  判断文件师傅存在
+
+    let outDir=fileConfig.xls.outdir||"./out"
+    filename=outDir+"/"+filename
+    // 获取目录
+    if(!fs.existsSync(outDir)){
+        fs.mkdirSync(outDir)
+    }
+
     if(fs.existsSync(filename)){
         filename=filename+"_"+Math.floor(Math.random() * (9999 - 1000))
     }
